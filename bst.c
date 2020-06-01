@@ -65,8 +65,8 @@ void bsn_init( bsn_t *node, S32 val)
 //Initialize the binary search tree so that it is empty. Run time: &Theta(1)
 void bst_init( bst_t *tree ) 
 {
-tree->root = NULL;
-tree->size = 0;
+	tree->root = NULL;
+	tree->size = 0;
 }
 
 //Remove all nodes from this binary search tree. Run time: T(n) with T(n) memory. 
@@ -97,9 +97,9 @@ bool bst_insert( bst_t *tree, S32 val )
 	
 	//special case: inserting at the root node
 	if(p_currNode == NULL) {
-	tree->root = p_newNode;
-	tree->size = tree->size + 1;	
-	return __TRUE;
+		tree->root = p_newNode;
+		tree->size = tree->size + 1;	
+		return __TRUE;
 	}
 	
 	//anything but root
@@ -126,11 +126,14 @@ bool bst_insert( bst_t *tree, S32 val )
 	}
 	
 	//p_prevNode now points to the last node before the leaf where we are inserting
-	if(p_prevNode->val > val) //insert as left child
+	if(p_prevNode->val > val)
+	{		//insert as left child
 		p_prevNode->left = p_newNode;
+	}
 	else //insert as right child
+	{	
 		p_prevNode->right = p_newNode;
-	
+	}
 	tree->size = tree->size + 1;
 	
 	return __TRUE;
@@ -143,7 +146,9 @@ S32 bst_min( bst_t *tree )
 	bsn_t *p_currNode = tree->root;
 	
 	if(tree->size == 0) 
+	{
 		return INT_MAX;
+	}
 	else 
 	{ 
 		// smallest int will be the left-most bottom node
@@ -169,8 +174,10 @@ S32 bst_max( bst_t *tree )
 	else
 	{ 
 		//largest int will be the right-most bottom node
-		while(p_currNode->right != NULL) 
+		while(p_currNode->right != NULL)
+		{
 			p_currNode = p_currNode->right;
+		}	
 	}
 	
 	return p_currNode->val;

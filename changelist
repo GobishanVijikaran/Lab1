@@ -11,3 +11,9 @@ Line 297: changed += to -= comment says decrement, but code was incrementing
 Line 312: added "}" at the end of program to get rid of error and warning
 Line 197: changed just & to && for conditional statement
 Line 243 & 247: changed right child of parent to left child of parent (swapped right with left and vice versa)
+
+Line 68-69: Tabbed the lines
+Line 100-102: Tabbed the lines 
+Line 130, 132, 134, 136: added "{}" for if/else statements 
+Line 149, 151: added "{}" for if statement 
+Line 178, 180: added "{}" for while statement 
