@@ -1,0 +1,5 @@
+Changelist for bst.c
+
+Line 125: change of identifier p_mewNode to p_newNode
+Line 144: indentation and brackets for the while loop
+Line 154: changed return type of function bst_max()
