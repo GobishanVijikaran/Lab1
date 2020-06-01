@@ -37,10 +37,17 @@
 *               description of how you used the tools to find and
 *               fix it. They can be in main.c or bst.c.
 *****************************************************************
-*  1.
-*  2.282
-*  3.
-*  4.
+*  1. Changed dot opterator to scope operator (Line ____, bst_delete function)
+			found by going through code visually finding errors
+*  2. Changed "+=" to "-=" (Line ____, bst_erase function) found buy watching 
+			variables in debugger; noticed variable incremented when comment said
+			it should decrement 
+*  3. Changed "&" to "&&" in conditional statement (Line ___, bst_delete function)
+			found by going through code visually finding errors
+*  4. Changed right child of parent to left child of parent (swapped right with 
+			left and vice versa) (Lines _____, bst_delete function) found by watching
+			variables in debugger; noticied wrong node was being switched, due to swapping
+			of values.
 ****************************************************************/
 
 #include <stdio.h>
