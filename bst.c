@@ -20,11 +20,17 @@
 *               justification for the change. You may make changes 
 *               to main.c or bst.c.
 *****************************************************************
-*  1.
-*  2.
-*  3.
-*  4.
-*  5.
+*  1. Within bst_delete(), changed the ordering of the different 
+			cases so it is easier to follow through (Line: around 216)
+*  2. Within bst_init(), the lines were tabbed so that it was easier
+			to read (Line: 74)
+*  3. Within bst_insert(), added curly braces to if statement to 
+			further clarify the code is within the scope of that statement
+			(Line: 106)
+*  4. Within bst_min(), added curly braces and tabbed line to while
+			statement to increase readability (Line: 164)
+*  5.	Within bst_max(), added curly braces to while statement to 
+		to further clarify the scope of the line (Line: 186)
 ****************************************************************/
 
 /*****************************************************************
@@ -37,15 +43,15 @@
 *               description of how you used the tools to find and
 *               fix it. They can be in main.c or bst.c.
 *****************************************************************
-*  1. Changed dot opterator to scope operator (Line ____, bst_delete function)
+*  1. Changed dot operator to scope operator (Line 224, bst_delete function)
 			found by going through code visually finding errors
-*  2. Changed "+=" to "-=" (Line ____, bst_erase function) found buy watching 
+*  2. Changed "+=" to "-=" (Line 318, bst_erase function) found by watching 
 			variables in debugger; noticed variable incremented when comment said
 			it should decrement 
-*  3. Changed "&" to "&&" in conditional statement (Line ___, bst_delete function)
+*  3. Changed "&" to "&&" in conditional statement (Line 246, bst_delete function)
 			found by going through code visually finding errors
 *  4. Changed right child of parent to left child of parent (swapped right with 
-			left and vice versa) (Lines _____, bst_delete function) found by watching
+			left and vice versa) (Lines 236 & 240, bst_delete function) found by watching
 			variables in debugger; noticied wrong node was being switched, due to swapping
 			of values.
 ****************************************************************/
@@ -96,7 +102,8 @@ bool bst_insert( bst_t *tree, S32 val )
 	bsn_init(p_newNode, val);
 	
 	//special case: inserting at the root node
-	if(p_currNode == NULL) {
+	if(p_currNode == NULL) 
+	{
 		tree->root = p_newNode;
 		tree->size = tree->size + 1;	
 		return __TRUE;
@@ -206,34 +213,6 @@ void bst_delete ( bsn_t *p_currNode, bsn_t *p_parentNode)
 			p_parentNode->right = NULL;
 		}
 	}
-	// case 3: two children, pick one to replace with
-	// balancing was not a parameter, so we will always take max of left branch to replace it with
-	else if ((p_currNode->right != NULL) && (p_currNode->left != NULL)) 
-	{
-		p_swapNode = p_currNode->left;
-		p_swapParent = p_currNode;
-		
-		// traverse until we find the max of the subtree
-		while(p_swapNode->right  != NULL) 
-		{
-			p_swapParent = p_swapNode;
-			p_swapNode = p_swapNode->right;
-		}
-		
-		// we now have the max of the subtree. By definition, it can only have one left or no children.
-		// if it is a leaf, we can simply copy the value into the current node and delete the leaf instead
-		p_currNode->val = p_swapNode->val;
-		
-		if(p_swapParent->left == p_swapNode)
-		{
-			p_swapParent->left = p_swapNode->left;
-		}
-		else 
-		{
-			p_swapParent->right = p_swapNode->left;
-		}
-			p_currNode = p_swapNode;
-	}
 	// case 2: one child, replace with child, delete child
 	else
 	{
@@ -261,6 +240,34 @@ void bst_delete ( bsn_t *p_currNode, bsn_t *p_parentNode)
 				p_parentNode->right = p_currNode->right;
 			}
 		}
+	}
+	// case 3: two children, pick one to replace with
+	// balancing was not a parameter, so we will always take max of left branch to replace it with
+	else if ((p_currNode->right != NULL) && (p_currNode->left != NULL)) 
+	{
+		p_swapNode = p_currNode->left;
+		p_swapParent = p_currNode;
+		
+		// traverse until we find the max of the subtree
+		while(p_swapNode->right  != NULL) 
+		{
+			p_swapParent = p_swapNode;
+			p_swapNode = p_swapNode->right;
+		}
+		
+		// we now have the max of the subtree. By definition, it can only have one left or no children.
+		// if it is a leaf, we can simply copy the value into the current node and delete the leaf instead
+		p_currNode->val = p_swapNode->val;
+		
+		if(p_swapParent->left == p_swapNode)
+		{
+			p_swapParent->left = p_swapNode->left;
+		}
+		else 
+		{
+			p_swapParent->right = p_swapNode->left;
+		}
+			p_currNode = p_swapNode;
 	}
 	
 	p_currNode->left = NULL;
