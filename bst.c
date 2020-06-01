@@ -240,11 +240,11 @@ void bst_delete ( bsn_t *p_currNode, bsn_t *p_parentNode)
 			// need to know whether we are to the left or right of the parent
 			if(p_parentNode->left == p_currNode)
 			{
-				p_parentNode->right = p_currNode->right;
+				p_parentNode->left = p_currNode->right;
 			}
 			else
 			{
-				p_parentNode->left = p_currNode->right;
+				p_parentNode->right = p_currNode->right;
 			}
 		}
 	}

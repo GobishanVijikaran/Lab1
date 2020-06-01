@@ -10,3 +10,4 @@ Line 231: changed dot operator to scope operator (because its a pointer)
 Line 297: changed += to -= comment says decrement, but code was incrementing
 Line 312: added "}" at the end of program to get rid of error and warning
 Line 197: changed just & to && for conditional statement
+Line 243 & 247: changed right child of parent to left child of parent (swapped right with left and vice versa)
