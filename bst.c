@@ -294,7 +294,7 @@ bool bst_erase( bst_t *tree, S32 val )
 			{
 				bst_delete (p_currNode, p_parentNode);
 			}
-			tree->size += 1;	//decrement size of the tree
+			tree->size -= 1;	//decrement size of the tree
 			return __TRUE;
 		}
 		else if (val < p_currNode->val) 

@@ -7,3 +7,4 @@ Line 177: changed args for bst_delete to be pointers
 Line 183-194: fixed indentation 
 Line 206: changed to point right node (max should be the bottom right of a subtree)
 Line 231: changed dot operator to scope operator (because its a pointer) 
+Line 297: changed += to -= comment says decrement, but code was incrementing
