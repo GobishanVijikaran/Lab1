@@ -122,7 +122,7 @@ bool bst_insert( bst_t *tree, S32 val )
 	if(p_prevNode->val > val) //insert as left child
 		p_prevNode->left = p_newNode;
 	else //insert as right child
-		p_prevNode->right = p_mewNode;
+		p_prevNode->right = p_newNode;
 	
 	tree->size = tree->size + 1;
 	
@@ -140,16 +140,18 @@ S32 bst_min( bst_t *tree )
 	else 
 	{ 
 		// smallest int will be the left-most bottom node
-		while(p_currNode->left != NULL) 
-		p_currNode = p_currNode->left;
-	}
+		while(p_currNode->left != NULL)
+		{
+			p_currNode = p_currNode->left;
+		}
+	}	
 	
 	return p_currNode->val;
 }
 
 
 // Returns the largest integer in the binary search tree. Return INT_MIN if the tree is empty. Run time: O(h)
-U32 bst_max( bst_t *tree ) 
+S32 bst_max( bst_t *tree ) 
 {
 	bsn_t *p_currNode = tree->root;
 	
@@ -172,7 +174,7 @@ U32 bst_max( bst_t *tree )
 //	1. It is a leaf node
 //  2. It has only one child
 //	3. It has two children
-void bst_delete ( bsn_t p_currNode, bsn_t p_parentNode)
+void bst_delete ( bsn_t *p_currNode, bsn_t *p_parentNode)
 {
 	bsn_t *p_swapNode = NULL;
 	bsn_t *p_swapParent = NULL;
@@ -181,14 +183,14 @@ void bst_delete ( bsn_t p_currNode, bsn_t p_parentNode)
 	if((p_currNode->right == NULL) && (p_currNode->left == NULL)) 
 	{
 	//update the pointer on the parent node to NULL
-	if(p_parentNode->left == p_currNode) 
-	{
-	p_parentNode->left = NULL;
-	}
-	else 
-	{
-	p_parentNode->right = NULL;
-	}
+		if(p_parentNode->left == p_currNode) 
+		{
+			p_parentNode->left = NULL;
+		}
+		else 
+		{
+			p_parentNode->right = NULL;
+		}
 	}
 	// case 3: two children, pick one to replace with
 	// balancing was not a parameter, so we will always take max of left branch to replace it with
