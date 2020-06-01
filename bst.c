@@ -311,3 +311,4 @@ bool bst_erase( bst_t *tree, S32 val )
 		}
 	return __FALSE;
 }
+}
