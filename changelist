@@ -3,3 +3,6 @@ Changelist for bst.c
 Line 125: change of identifier p_mewNode to p_newNode
 Line 144: indentation and brackets for the while loop
 Line 154: changed return type of function bst_max()
+Line 177: changed args for bst_delete to be pointers 
+Line 183-194: fixed indentation 
+Line 206: changed to point right node (max should be the bottom right of a subtree)

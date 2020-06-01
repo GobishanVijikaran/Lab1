@@ -203,16 +203,22 @@ void bst_delete ( bsn_t *p_currNode, bsn_t *p_parentNode)
 		while(p_swapNode->right  != NULL) 
 		{
 			p_swapParent = p_swapNode;
-			p_swapNode = p_swapNode->left;
+			p_swapNode = p_swapNode->right;
 		}
 		
 		// we now have the max of the subtree. By definition, it can only have one left or no children.
 		// if it is a leaf, we can simply copy the value into the current node and delete the leaf instead
 		p_currNode->val = p_swapNode->val;
 		
-		if(p_swapParent->left == p_swapNode) p_swapParent->left = p_swapNode->left; 
-		else p_swapParent->right = p_swapNode->left;
-		p_currNode = p_swapNode;
+		if(p_swapParent->left == p_swapNode)
+		{
+			p_swapParent->left = p_swapNode->left;
+		}
+		else 
+		{
+			p_swapParent->right = p_swapNode->left;
+		}
+			p_currNode = p_swapNode;
 	}
 	// case 2: one child, replace with child, delete child
 	else
