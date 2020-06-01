@@ -309,6 +309,6 @@ bool bst_erase( bst_t *tree, S32 val )
 			p_parentNode = p_currNode;
 			p_currNode = p_currNode->right;
 		}
+	}
 	return __FALSE;
-}
 }
