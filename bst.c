@@ -194,7 +194,7 @@ void bst_delete ( bsn_t *p_currNode, bsn_t *p_parentNode)
 	}
 	// case 3: two children, pick one to replace with
 	// balancing was not a parameter, so we will always take max of left branch to replace it with
-	else if ((p_currNode->right != NULL) & (p_currNode->left != NULL)) 
+	else if ((p_currNode->right != NULL) && (p_currNode->left != NULL)) 
 	{
 		p_swapNode = p_currNode->left;
 		p_swapParent = p_currNode;
